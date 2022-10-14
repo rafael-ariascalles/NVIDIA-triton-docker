@@ -12,13 +12,13 @@ import os
 # We instantiate a deeplab model with the location of the pretrained models
 # or in this case, our triton server
 # https://github.com/tensorflow/models/tree/master/research/deeplab
+
 model = DeepLabModel(os.getenv("TRITON_URL"))
 
 # Let's generate a new FastAPI app
 # Generate a FastAPI instance called `app` with the title 'Face-Bokeh'
 # https://fastapi.tiangolo.com/
 app = FastAPI(title="Face-Bokeh")
-
 
 #The face-bokeh endpoint receives post requests with the image and returns the transformed image
 @app.post("/face-bokeh/{query}", tags=["Face Bokeh"])
@@ -38,4 +38,4 @@ async def bokeh(file: UploadFile = File(...), query: str = ''):
 
 @app.get("/", tags=["Health Check"])
 async def root():
-    return {"message": "Ok"}
+    return "OK"

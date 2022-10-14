@@ -12,7 +12,7 @@ import os
 # We instantiate a face-emotion detector with the location of the pretrained models.
 # In this case, the model needs to be set from our emotions.py
 face_model_path = './haarcascade_frontalface_default.xml'
-model = Sentiment(os.getenv("TRITON_EMOTION"))
+model = Sentiment(face_model_path,os.getenv("TRITON_URL"))
 
 # Let's generate a new FastAPI app
 # Generate a FastAPI instance called `app` with the title 'Face-Emotion'
