@@ -26,7 +26,17 @@ services:
     depends_on:
       - triton
     
-
+  main:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - SERVICE_BOKE=http://boke:8000
+      - SERVICE_EMOTION=http://emotion:8000
+    depends_on:
+      - emotion
+      - boke
+    
     
 
 
